@@ -43,18 +43,18 @@ void library_init() {
     }
 
     dd::Tracer tracer{*validated_config};
-    dd::SpanConfig options;
+    // dd::SpanConfig options;
 
-    options.name = "parent";
-    dd::Span parent = tracer.create_span(options);
+    // options.name = "parent";
+    // dd::Span parent = tracer.create_span(options);
 
-    std::this_thread::sleep_for(std::chrono::seconds(1));
+    // std::this_thread::sleep_for(std::chrono::seconds(1));
 
-    options.name = "child";
-    dd::Span child = parent.create_child(options);
-    child.set_tag("foo", "bar");
+    // options.name = "child";
+    // dd::Span child = parent.create_child(options);
+    // child.set_tag("foo", "bar");
 
-    std::this_thread::sleep_for(std::chrono::seconds(2));
+    // std::this_thread::sleep_for(std::chrono::seconds(2));
 }
 
 struct LibraryInitializer {

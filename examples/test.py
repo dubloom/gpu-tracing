@@ -1,6 +1,4 @@
 import torch
-
-device = torch.cuda.current_device()
-x = torch.randn(1024, 1024).to(device)
-y = torch.randn(1024, 1024).to(device)
-z = torch.matmul(x, y)
+print("CUDA available:", torch.cuda.is_available())
+x = torch.tensor([1.0], device='cuda')
+print("Tensor on GPU:", x)
