@@ -8,15 +8,20 @@ lib: src/lib.cpp
 	src/lib.cpp -L/usr/local/cuda/lib64 -lcudart -ldd_trace_cpp-shared -lcurl
 	mv lib_ddog_cuda.so .build
 
+tracing-lib: src/tracing.cpp
+	$(CXX) -I$(CUDA_PATH)/include $(CFLAGS) -o lib_tracing_ddog_cuda.so \
+	src/tracing.cpp -Iinclude -L/usr/local/cuda/lib64 -lcudart -ldd_trace_cpp-shared -lcurl
+	mv lib_tracing_ddog_cuda.so .build
+
 submodule:
 	cd dd-trace-cpp && \
 	cmake -B .build . && \
 	cmake --build .build -j8 && \
 	cmake --install .build --prefix=.install
 
-example-cuda: examples/mem.cu
-	nvcc -g -G -o examples/mem examples/mem.cu -cudart shared
-	LD_PRELOAD=.build/lib_ddog_cuda.so ./examples/mem
+example-cuda: examples/cuda/matmul.cu
+	nvcc -g -G -o examples/cuda/matmul examples/cuda/matmul.cu -Iinclude -L.build -cudart shared
+	LD_PRELOAD=.build/lib_tracing_ddog_cuda.so ./examples/cuda/matmul
 
 example-integration: 
 	LD_PRELOAD=.build/lib_ddog_cuda.so ddtrace-run fastapi dev examples/python/main.py
