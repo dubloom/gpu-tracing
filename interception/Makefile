@@ -14,11 +14,12 @@ submodule:
 	cmake --build .build -j8 && \
 	cmake --install .build --prefix=.install
 
-example: examples/mem.cu
+example-cuda: examples/mem.cu
 	nvcc -g -G -o examples/mem examples/mem.cu -cudart shared
-
-run: examples/mem
 	LD_PRELOAD=.build/lib_ddog_cuda.so ./examples/mem
+
+example-integration: 
+	LD_PRELOAD=.build/lib_ddog_cuda.so ddtrace-run fastapi dev examples/python/main.py
 
 clean:
 	rm .build/lib_ddog_cuda.so
