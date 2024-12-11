@@ -38,6 +38,7 @@ bash -c "$(curl -L https://install.datadoghq.com/scripts/install_script_agent7.s
 rm ddagent-install.log
 
 # Setup dd-trace-cpp
+git clone git@github.com:dubloom/gpu-tracing.git
 git submodule init
 git submodule update
 cd dd-trace-cpp
@@ -46,9 +47,15 @@ cmake --build .build -j8
 sudo cmake --install .build
 
 # Setup venv
+cd ..
 sudo apt-get -y install python3.10-venv
 python3 -m venv .gpu-tracing-venv
 source .gpu-tracing-venv/bin/activate
 pip3 install torch numpy
+
+# Setup go 
+wget https://go.dev/dl/go1.23.4.linux-amd64.tar.gz 
+tar -C /usr/local -xzf go1.23.4.linux-amd64.tar.gz
+rm -rf go1.23.4.linux-amd64.tar.gz
 
 sudo reboot

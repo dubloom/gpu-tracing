@@ -1,0 +1,19 @@
+{
+    "files.associations": {
+        "typeindex": "cpp",
+        "typeinfo": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "ranges": "cpp",
+        "regex": "cpp",
+        "utility": "cpp",
+        "valarray": "cpp",
+        "chrono": "cpp",
+        "algorithm": "cpp",
+        "thread": "cpp",
+        "iostream": "cpp",
+        "cmath": "cpp"
+    }
+}
