@@ -2,3 +2,8 @@
 interception/.build
 interception/examples/cuda/matmul
 profiler/examples/matmul
+**/.env
+report*
+matmul
+go.sum
+dd-nsys/dd-nsys
