@@ -7,7 +7,7 @@ app = FastAPI()
 
 
 # Charger la bibliothèque
-cuda_lib = ctypes.CDLL('/home/ubuntu/gpu-tracing/.build/lib_ddog_cuda.so')
+cuda_lib = ctypes.CDLL('/home/ubuntu/gpu-tracing/dd-cuda-tracer/.build/lib_ddog_cuda.so')
 class CudaTraced(ctypes.Structure):
     _fields_ = [("action", ctypes.c_char_p),
                 ("start", ctypes.c_double),

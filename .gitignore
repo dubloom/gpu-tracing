@@ -1,7 +1,5 @@
 .gpu-tracing-venv
-interception/.build
-interception/examples/cuda/matmul
-profiler/examples/matmul
+dd-cuda-tracer/.build
 **/.env
 report*
 matmul

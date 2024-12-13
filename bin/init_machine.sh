@@ -50,7 +50,7 @@ cd ..
 sudo apt-get -y install python3.10-venv
 python3 -m venv .gpu-tracing-venv
 source .gpu-tracing-venv/bin/activate
-pip3 install torch numpy
+pip3 install torch numpy ddtrace fastapi[standard]
 
 # Setup go 
 wget https://go.dev/dl/go1.23.4.linux-amd64.tar.gz 
