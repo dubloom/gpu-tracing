@@ -1,0 +1,7 @@
+django
+flask
+flask_sqlalchemy
+torch
+ddtrace
+requests
+numpy

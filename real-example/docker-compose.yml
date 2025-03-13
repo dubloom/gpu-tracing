@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  django:
+    build: ./django_app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - flask
+    environment:
+      - FLASK_API_URL=http://flask:5000
+
+  flask:
+    build: ./flask_app
+    ports:
+      - "5000:5000"
